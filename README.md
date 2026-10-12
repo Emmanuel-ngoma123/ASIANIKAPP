@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ASIANIK - Plateforme Web et Gestion des Membres
 
-## Getting Started
+Ce projet est la plateforme officielle de l'ASIANIK (Association des Ingénieurs Anciens de l'ISTA/Kolwezi).
+Il inclut un site public (vitrine) et un espace d'administration (Phase 1 - MVP).
 
-First, run the development server:
+## Technologies
+- **Front-end** : Next.js 15 (App Router), React, TypeScript, Tailwind CSS
+- **Back-end & Base de données** : Supabase (PostgreSQL, Authentification, Storage)
+- **Icônes** : Lucide React
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Installation en développement
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Cloner ou ouvrir le projet**
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   ```
+3. **Configuration de Supabase**
+   - Créez un projet sur [Supabase](https://supabase.com).
+   - Exécutez le script SQL présent dans `supabase/schema.sql` dans l'éditeur SQL de Supabase pour créer les tables.
+   - Copiez le fichier `.env.example` en `.env.local` et remplissez les variables avec vos clés API Supabase :
+     ```env
+     NEXT_PUBLIC_SUPABASE_URL=votre_url_supabase
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=votre_cle_anon_supabase
+     ```
+4. **Démarrer le serveur de développement**
+   ```bash
+   npm run dev
+   ```
+   Le site sera accessible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Déploiement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Le projet est conçu pour être déployé sur **Vercel** de manière optimale :
+1. Créez un compte sur Vercel et importez ce dépôt GitHub.
+2. Ajoutez les variables d'environnement (`NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_ANON_KEY`) dans les paramètres du projet Vercel.
+3. Déployez.
 
-## Learn More
+## Guide d'Administration (Phase 1)
+Pour accéder à l'administration :
+1. Créez un compte depuis l'interface ou ajoutez un utilisateur manuellement via Supabase Auth.
+2. Dans la table `users`, mettez à jour la colonne `role` de votre utilisateur à `'admin'`.
+3. Connectez-vous sur le site et accédez à `/admin`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Note : Les étapes de création et d'authentification seront implémentées dans le prochain module.*
